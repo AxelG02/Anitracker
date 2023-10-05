@@ -1,0 +1,74 @@
+:root {
+    --primary-color: #F5E3E0;
+    --background-color: #1a0844;
+    --success: #8cff3f;
+    --failure: #e42c2c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#body {
+    background-color: var(--background-color);
+    padding: 8px;
+}
+
+#title-box {
+    color: var(--primary-color);
+    font-size: 12px;
+    padding: 3px;
+    margin-bottom: 9px;
+    display: flex;
+    flex-direction: row;
+}
+
+#actions-box {
+    display: flex;
+}
+
+#input-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+#input-text {
+    flex-grow: 1;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    margin-left: 7px;
+}
+
+#save-btn {
+    display: grid;
+    border: none;
+    background-color: transparent;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+#quick-add-btn {
+    display: grid;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 8px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#save-svg {
+    fill: var(--primary-color);
+}
+
+#quick-add-svg {
+    fill: var(--primary-color);
+}

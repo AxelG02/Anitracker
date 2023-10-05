@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Ani_Tracker",
+    "version": "0.1.0",
+    "description": "Add a new title to your library of finished anime",
+    "action": {
+        "default_title": "Anime tracking service",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "tabs"
+    ]
+}

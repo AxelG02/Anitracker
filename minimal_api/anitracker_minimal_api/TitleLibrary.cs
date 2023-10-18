@@ -18,10 +18,11 @@
         /// </summary>
         /// <param name="_context">The database context</param>
         /// <param name="title">The title to add</param>
+        /// <param name="poster">The poster image URL</param>
         /// <returns>The added title</returns>
-        public static async Task<TitleItem> Add(TitleDb _context, string title)
+        public static async Task<TitleItem> Add(TitleDb _context, string title, string? poster)
         {
-            return (await AddRange(_context, new List<string>() { title })).FirstOrDefault(new TitleItem { ID = -1, Title = title });
+            return (await AddRange(_context, new List<TitleItem>() { new TitleItem() { Title = title, Poster = poster } })).FirstOrDefault(new TitleItem { ID = -1, Title = title, Poster = poster });
         }
         /// <summary>
         /// Adds miltiple <paramref name="titles"/> to the titles table
@@ -29,12 +30,11 @@
         /// <param name="_context">The database context</param>
         /// <param name="titles">The list of titles to add</param>
         /// <returns>The added list</returns>
-        public static async Task<List<TitleItem>> AddRange(TitleDb _context, List<string> titles)
+        public static async Task<List<TitleItem>> AddRange(TitleDb _context, List<TitleItem> titles)
         {
             if (!titles.Any()) return new List<TitleItem>();
 
-            var new_titles = titles.Where(title => Find(_context, title) is null)
-                                   .Select(title => new TitleItem { Title = title }).ToList();
+            var new_titles = titles.Where(item => Find(_context, item.Title) is null).ToList();
 
             if (!new_titles.Any()) return new List<TitleItem>();
 

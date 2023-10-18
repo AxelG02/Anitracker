@@ -9,5 +9,6 @@ namespace anitracker_minimal_api
 
         [Required]
         public required string Title { get; set; }
+        public string? Poster { get; set; }
     }
 }

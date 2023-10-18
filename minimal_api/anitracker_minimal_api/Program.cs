@@ -17,11 +17,11 @@ app.MapGet("/", () => "Service is alive");
 #endregion
 
 #region POSTs
-app.MapPost("titlelist/add", async (string title, TitleDb db) =>
+app.MapPost("titlelist/add", async (string title, string? poster, TitleDb db) =>
 {
     try
     {
-        var response = await TitleLibrary.Add(db, title);
+        var response = await TitleLibrary.Add(db, title, poster);
         return response.ID == -1 ? Results.BadRequest("Title is a duplicate") : Results.Ok(response);
     }
     catch (Exception ex)
@@ -29,7 +29,7 @@ app.MapPost("titlelist/add", async (string title, TitleDb db) =>
         return Results.Problem(detail: $"An error occurred: {ex.Message}", statusCode: 500);
     }
 });
-app.MapPost("titlelist/bulk", async ([FromBody] List<string> titles, TitleDb db) =>
+app.MapPost("titlelist/bulk", async ([FromBody] List<TitleItem> titles, TitleDb db) =>
 {
     try
     {
